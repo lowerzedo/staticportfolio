@@ -93,7 +93,7 @@ modalCloses.forEach((modalClose) => {
 
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiperPortfolio = new Swiper(".portfolio__container", {
-  cssMode: true,
+  cssMode: false,
   loop: true,
 
   navigation: {
@@ -234,3 +234,24 @@ function sendEmail() {
   window.location.href = mailtoLink;
 }
 
+/*==================== SCROLL REVEAL ANIMATION ====================*/
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+};
+
+const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
