@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-11T16:04:31Z",
+  "title": "Design System: Nazar Hasanov Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "electric-blue": {
+        "role": "primary",
+        "displayName": "Electric Blue",
+        "canonical": "oklch(0.56 0.255 265)",
+        "tonalRamp": ["oklch(0.15 0.255 265)", "oklch(0.26 0.255 265)", "oklch(0.37 0.255 265)", "oklch(0.48 0.255 265)", "oklch(0.59 0.255 265)", "oklch(0.70 0.20 265)", "oklch(0.82 0.12 265)", "oklch(0.95 0.04 265)"]
+      },
+      "electric-blue-deep": {
+        "role": "primary",
+        "displayName": "Electric Blue Deep",
+        "canonical": "oklch(0.44 0.25 265)",
+        "tonalRamp": ["oklch(0.15 0.25 265)", "oklch(0.26 0.25 265)", "oklch(0.37 0.25 265)", "oklch(0.48 0.25 265)", "oklch(0.59 0.22 265)", "oklch(0.70 0.18 265)", "oklch(0.82 0.10 265)", "oklch(0.95 0.03 265)"]
+      },
+      "signal-lime": {
+        "role": "secondary",
+        "displayName": "Signal Lime",
+        "canonical": "oklch(0.89 0.2 126)",
+        "tonalRamp": ["oklch(0.15 0.12 126)", "oklch(0.26 0.15 126)", "oklch(0.37 0.18 126)", "oklch(0.48 0.2 126)", "oklch(0.59 0.2 126)", "oklch(0.70 0.2 126)", "oklch(0.82 0.2 126)", "oklch(0.95 0.12 126)"]
+      },
+      "systems-ink": {
+        "role": "neutral",
+        "displayName": "Systems Ink",
+        "canonical": "oklch(0.145 0.018 265)",
+        "tonalRamp": ["oklch(0.15 0.018 265)", "oklch(0.26 0.018 265)", "oklch(0.37 0.018 265)", "oklch(0.48 0.018 265)", "oklch(0.59 0.018 265)", "oklch(0.70 0.018 265)", "oklch(0.82 0.014 265)", "oklch(0.95 0.008 265)"]
+      },
+      "systems-ink-soft": {
+        "role": "neutral",
+        "displayName": "Systems Ink Soft",
+        "canonical": "oklch(0.22 0.022 265)",
+        "tonalRamp": ["oklch(0.15 0.022 265)", "oklch(0.26 0.022 265)", "oklch(0.37 0.022 265)", "oklch(0.48 0.022 265)", "oklch(0.59 0.02 265)", "oklch(0.70 0.018 265)", "oklch(0.82 0.014 265)", "oklch(0.95 0.008 265)"]
+      },
+      "cool-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(0.975 0.006 265)",
+        "tonalRamp": ["oklch(0.15 0.006 265)", "oklch(0.26 0.006 265)", "oklch(0.37 0.006 265)", "oklch(0.48 0.006 265)", "oklch(0.59 0.006 265)", "oklch(0.70 0.006 265)", "oklch(0.82 0.006 265)", "oklch(0.95 0.006 265)"]
+      },
+      "cool-paper-dim": {
+        "role": "neutral",
+        "displayName": "Cool Paper Dim",
+        "canonical": "oklch(0.92 0.012 265)",
+        "tonalRamp": ["oklch(0.15 0.012 265)", "oklch(0.26 0.012 265)", "oklch(0.37 0.012 265)", "oklch(0.48 0.012 265)", "oklch(0.59 0.012 265)", "oklch(0.70 0.012 265)", "oklch(0.82 0.012 265)", "oklch(0.95 0.008 265)"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(0.5 0.018 265)",
+        "tonalRamp": ["oklch(0.15 0.018 265)", "oklch(0.26 0.018 265)", "oklch(0.37 0.018 265)", "oklch(0.48 0.018 265)", "oklch(0.59 0.018 265)", "oklch(0.70 0.016 265)", "oklch(0.82 0.012 265)", "oklch(0.95 0.006 265)"]
+      },
+      "structural-line": {
+        "role": "neutral",
+        "displayName": "Structural Line",
+        "canonical": "oklch(0.79 0.014 265 / 0.55)",
+        "tonalRamp": ["oklch(0.15 0.014 265)", "oklch(0.26 0.014 265)", "oklch(0.37 0.014 265)", "oklch(0.48 0.014 265)", "oklch(0.59 0.014 265)", "oklch(0.70 0.014 265)", "oklch(0.82 0.012 265)", "oklch(0.95 0.006 265)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {"displayName": "Display", "purpose": "Hero and contact statements only."},
+      "headline": {"displayName": "Headline", "purpose": "Major section ideas and career framing."},
+      "body": {"displayName": "Body", "purpose": "Recruiter-facing explanations and evidence."},
+      "label": {"displayName": "Technical Label", "purpose": "Dates, metadata, technical previews, and status."}
+    },
+    "shadows": [
+      {"name": "portrait-separation", "value": "drop-shadow(0 7px 7px oklch(0.08 0.02 265 / 0.32))", "purpose": "Separates the transparent portrait from the dark hero disc. No card uses a box shadow."}
+    ],
+    "motion": [
+      {"name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default state transition and entrance easing."},
+      {"name": "hero-entrance", "value": "950ms to 1100ms", "purpose": "Orchestrates the name and orbit composition on first load."},
+      {"name": "orbit-loop", "value": "17s to 24s linear", "purpose": "Slow continuous motion for the two hero rings."},
+      {"name": "ticker-loop", "value": "28s linear", "purpose": "Moves the discipline strip without interrupting reading."}
+    ],
+    "breakpoints": [
+      {"name": "compact", "value": "560px"},
+      {"name": "mobile-navigation", "value": "860px"},
+      {"name": "wide-hero", "value": "1050px"}
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The solid recruiter-path action used in the hero.",
+      "html": "<a class=\"ds-button-primary\" href=\"#qualifications\">Explore experience <span aria-hidden=\"true\">↓</span></a>",
+      "css": ".ds-button-primary { display:inline-flex; min-height:52px; align-items:center; gap:13px; padding:13px 19px; border-radius:999px; background:var(--color-ink); color:white; font:700 15px Archivo,Arial,sans-serif; text-decoration:none; transition:transform 240ms cubic-bezier(.16,1,.3,1),background-color 240ms cubic-bezier(.16,1,.3,1); } .ds-button-primary:hover { background:var(--color-signal); color:var(--color-ink); transform:translateY(-3px); } .ds-button-primary:focus-visible { outline:3px solid var(--color-blue-deep); outline-offset:4px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "description": "A quieter action with a structural underline and directional arrow.",
+      "html": "<a class=\"ds-text-link\" href=\"https://www.linkedin.com/in/nazar-hasanov/\">View LinkedIn <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-text-link { display:inline-flex; min-height:44px; align-items:center; gap:9px; border-bottom:1px solid currentColor; color:var(--color-ink); font:700 16px Archivo,Arial,sans-serif; text-decoration:none; transition:gap 240ms cubic-bezier(.16,1,.3,1); } .ds-text-link:hover { gap:14px; } .ds-text-link:focus-visible { outline:3px solid var(--color-blue-deep); outline-offset:4px; }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "skill-chip",
+      "description": "A compact technical label used only inside expanded expertise rows.",
+      "html": "<span class=\"ds-skill-chip\">Golang</span>",
+      "css": ".ds-skill-chip { display:inline-flex; padding:9px 13px; border-radius:999px; background:var(--color-signal); color:var(--color-ink); font:600 11px/1 JetBrains Mono,monospace; }"
+    },
+    {
+      "name": "Credential Card",
+      "kind": "card",
+      "refersTo": "credential-card",
+      "description": "A flat paper object that holds a verified cloud credential.",
+      "html": "<article class=\"ds-credential\"><div><small>AWS Certified</small><h3>Solutions Architect</h3><p>Associate</p></div><a href=\"#credential\">View credential <span aria-hidden=\"true\">↗</span></a></article>",
+      "css": ".ds-credential { display:flex; width:320px; min-height:360px; flex-direction:column; padding:27px; border-radius:12px; background:var(--color-paper); color:var(--color-ink); font-family:Archivo,Arial,sans-serif; transition:transform 320ms cubic-bezier(.16,1,.3,1); } .ds-credential:hover { transform:translateY(-8px); } .ds-credential small,.ds-credential p { font:600 11px/1.5 JetBrains Mono,monospace; } .ds-credential h3 { max-width:12ch; font-size:34px; line-height:1.05; letter-spacing:-.035em; } .ds-credential a { display:flex; justify-content:space-between; margin-top:auto; padding-top:16px; border-top:1px solid var(--color-line); color:inherit; font-weight:700; text-decoration:none; } .ds-credential a:focus-visible { outline:3px solid var(--color-blue-deep); outline-offset:4px; }"
+    },
+    {
+      "name": "Navigation Contact",
+      "kind": "nav",
+      "description": "The persistent conversation action in desktop and mobile navigation.",
+      "html": "<a class=\"ds-nav-contact\" href=\"mailto:contact@hasanovnazar.com\">Start a conversation</a>",
+      "css": ".ds-nav-contact { display:inline-flex; min-height:45px; align-items:center; padding:10px 16px; border-radius:999px; background:var(--color-ink); color:white; font:700 13px Archivo,Arial,sans-serif; text-decoration:none; transition:background-color 220ms cubic-bezier(.16,1,.3,1); } .ds-nav-contact:hover { background:var(--color-signal); color:var(--color-ink); } .ds-nav-contact:focus-visible { outline:3px solid var(--color-blue-deep); outline-offset:4px; }"
+    },
+    {
+      "name": "Contact Orb",
+      "kind": "custom",
+      "description": "The circular final action that closes the page with one decisive object.",
+      "html": "<a class=\"ds-contact-orb\" href=\"mailto:contact@hasanovnazar.com\"><span>Email Nazar</span><span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-contact-orb { display:flex; width:240px; aspect-ratio:1; align-items:center; justify-content:center; gap:24px; border-radius:50%; background:var(--color-signal); color:var(--color-ink); font:800 17px Archivo,Arial,sans-serif; text-decoration:none; transition:transform 450ms cubic-bezier(.16,1,.3,1),background-color 280ms cubic-bezier(.16,1,.3,1); } .ds-contact-orb:hover { background:var(--color-blue); color:white; transform:scale(1.06) rotate(-3deg); } .ds-contact-orb:focus-visible { outline:3px solid var(--color-signal); outline-offset:4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Kinetic Systems Map",
+    "overview": "The interface behaves like a system diagram brought to life. A saturated blue first screen carries Nazar's name, role, and portrait while orbit lines and technical markers create controlled movement around the person at the centre. The layout then becomes quieter and more linear as evidence accumulates. The visual voice is engineered, kinetic, and assured. Large Archivo typography provides the confidence of the reference sites, while JetBrains Mono labels add technical precision only where metadata benefits from it. The system explicitly rejects generic developer portfolio templates, decorative glassmorphism, terminal-themed dark interfaces, and repetitive card grids. Motion explains space and hierarchy. Pointer parallax is confined to the hero, image zoom belongs to the portrait story, the credential rail enters horizontally, and the contact orb arrives as a distinct object. Every movement has a static reduced-motion equivalent.",
+    "keyCharacteristics": [
+      "One saturated blue world creates the first impression.",
+      "Oversized type remains readable, direct, and capped at 6rem.",
+      "Evidence becomes more structured as the visitor scrolls.",
+      "Lime signals interaction and motion without flooding the page.",
+      "Flat surfaces rely on overlap, scale, and contrast for depth."
+    ],
+    "rules": [
+      {"name": "The Drenched First Screen Rule", "body": "The hero is fully committed to Electric Blue. Do not dilute it with floating white cards or decorative gradients.", "section": "colors"},
+      {"name": "The Lime Signal Rule", "body": "Signal Lime marks motion, focus, selection, or action. It never becomes a general background theme.", "section": "colors"},
+      {"name": "The One Shout Per View Rule", "body": "One display statement dominates a viewport. Supporting text steps down clearly and never competes through scale.", "section": "typography"},
+      {"name": "The Hard Ceiling Rule", "body": "Display type never exceeds 6rem and letter spacing never tightens beyond -0.04em.", "section": "typography"},
+      {"name": "The Structural Depth Rule", "body": "If a surface needs a wide soft shadow to feel important, the hierarchy is wrong. Change scale, placement, or color instead.", "section": "elevation"},
+      {"name": "The Flat Credential Rule", "body": "Credential objects sit directly on blue with a paper fill and 12px corners. Hover movement is short and never paired with a decorative border.", "section": "elevation"}
+    ],
+    "dos": [
+      "Do make the role, current company, and engineering value visible on the first screen.",
+      "Do let Electric Blue carry a large surface instead of using it as a small accent.",
+      "Do use verified outcomes, dates, roles, and credential links as primary evidence.",
+      "Do vary motion by purpose: orbit in the hero, zoom on imagery, horizontal entry for rails, and object scale for the contact action.",
+      "Do preserve WCAG 2.2 AA contrast, visible focus, keyboard access, reduced motion, and useful no-JavaScript content.",
+      "Do keep cards at 12px corners and reserve full pills for buttons, tags, and circular controls."
+    ],
+    "donts": [
+      "Don't revert to generic developer portfolio templates, decorative glassmorphism, terminal-themed dark interfaces, repetitive card grids, or skill progress bars.",
+      "Don't use stock code imagery, gradient text, side-stripe accents, or wide decorative shadows.",
+      "Don't copy Nothin', PX Push, or Awwwards portfolio conventions literally. Use their confidence, scale, and spatial choreography as inspiration only.",
+      "Don't apply one identical fade-and-rise reveal to every section.",
+      "Don't hide content behind motion, JavaScript, hover, pointer precision, or color alone.",
+      "Don't add marketing buzzwords, inflated claims, or hiring copy that sounds arrogant."
+    ]
+  }
+}
