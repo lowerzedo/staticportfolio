@@ -171,12 +171,19 @@ Components feel tactile and confident, with simple shapes and explicit state cha
 - The current role receives a single Electric Blue fill and 12px corners.
 - Other rows remain flat and non-interactive, with no hover motion that implies a click.
 
+### Discipline Strip
+
+- The discipline list is a native horizontal rail with a seamless repeated sequence.
+- Automatic movement runs at a calm, constant speed while the strip is visible.
+- Trackpad scrolling, touch scrolling, mouse dragging, and Left or Right Arrow keys take immediate control.
+- Automatic movement pauses briefly after direct input and remains disabled under reduced-motion preferences.
+
 ### Hero Orbit
 
 - The portrait sits inside two one-pixel orbital rings and a dark circular field.
 - Four compact technical labels move at different pointer depths.
 - Scroll zoom affects the composition only while leaving the text stable.
-- Reduced motion removes orbit, parallax, ticker, and zoom movement while preserving the full composition.
+- Reduced motion removes orbit, parallax, automatic ticker movement, and zoom while preserving the full composition and manual scrolling.
 
 ## 6. Do's and Don'ts
 
@@ -186,6 +193,7 @@ Components feel tactile and confident, with simple shapes and explicit state cha
 - **Do** let Electric Blue carry a large surface instead of using it as a small accent.
 - **Do** use verified outcomes, dates, roles, and credential links as primary evidence.
 - **Do** vary motion by purpose: orbit in the hero, zoom on imagery, horizontal entry for rails, and object scale for the contact action.
+- **Do** let direct user input take priority over automatic movement.
 - **Do** preserve WCAG 2.2 AA contrast, visible focus, keyboard access, reduced motion, and useful no-JavaScript content.
 - **Do** keep cards at 12px corners and reserve full pills for buttons, tags, and circular controls.
 

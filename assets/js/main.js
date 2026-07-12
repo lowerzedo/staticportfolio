@@ -162,6 +162,187 @@ listenForMediaChange(reducedMotion, () => {
 
 updateHeroZoom();
 
+const disciplineStrip = document.querySelector(".discipline-strip");
+const disciplineTrack = disciplineStrip?.querySelector(".discipline-strip__track");
+const disciplineGroup = disciplineTrack?.querySelector(".discipline-strip__group");
+const TICKER_SPEED = 36;
+let tickerLoopWidth = 0;
+let tickerAnimationFrame = 0;
+let tickerResizeFrame = 0;
+let tickerLastTime = 0;
+let tickerPauseUntil = 0;
+let tickerIsVisible = false;
+let tickerIsDragging = false;
+let tickerDragStartX = 0;
+let tickerDragStartScroll = 0;
+let tickerIsNormalizing = false;
+
+function pauseTicker(duration = 1400) {
+  tickerPauseUntil = Math.max(tickerPauseUntil, performance.now() + duration);
+}
+
+function normalizeTickerPosition() {
+  if (!disciplineStrip || !tickerLoopWidth || tickerIsNormalizing) return 0;
+
+  const previous = disciplineStrip.scrollLeft;
+  let next = previous;
+
+  while (next < tickerLoopWidth) next += tickerLoopWidth;
+  while (next >= tickerLoopWidth * 3) next -= tickerLoopWidth;
+
+  const adjustment = next - previous;
+  if (Math.abs(adjustment) > 0.5) {
+    tickerIsNormalizing = true;
+    disciplineStrip.scrollLeft = next;
+    requestAnimationFrame(() => {
+      tickerIsNormalizing = false;
+    });
+  }
+
+  return adjustment;
+}
+
+function buildTickerLoop() {
+  if (!disciplineStrip || !disciplineTrack || !disciplineGroup) return;
+
+  const previousPhase = tickerLoopWidth
+    ? ((disciplineStrip.scrollLeft % tickerLoopWidth) + tickerLoopWidth) % tickerLoopWidth / tickerLoopWidth
+    : 0;
+
+  [...disciplineTrack.querySelectorAll(".discipline-strip__group")].slice(1).forEach((group) => group.remove());
+  tickerLoopWidth = disciplineGroup.getBoundingClientRect().width;
+  if (!tickerLoopWidth) return;
+
+  const groupCount = Math.max(6, Math.ceil(disciplineStrip.clientWidth / tickerLoopWidth) + 5);
+  for (let index = 1; index < groupCount; index += 1) {
+    const clone = disciplineGroup.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.dataset.tickerClone = "";
+    disciplineTrack.append(clone);
+  }
+
+  disciplineStrip.scrollLeft = tickerLoopWidth * 2 + previousPhase * tickerLoopWidth;
+}
+
+function queueTickerBuild() {
+  if (tickerResizeFrame) return;
+  tickerResizeFrame = requestAnimationFrame(() => {
+    tickerResizeFrame = 0;
+    buildTickerLoop();
+  });
+}
+
+function stopTickerAnimation() {
+  if (!tickerAnimationFrame) return;
+  cancelAnimationFrame(tickerAnimationFrame);
+  tickerAnimationFrame = 0;
+}
+
+function runTickerAnimation(timestamp) {
+  tickerAnimationFrame = 0;
+  if (!disciplineStrip || !tickerIsVisible || reducedMotion.matches) return;
+
+  const elapsed = tickerLastTime ? Math.min(timestamp - tickerLastTime, 1000) : 0;
+  tickerLastTime = timestamp;
+
+  if (!tickerIsDragging && timestamp >= tickerPauseUntil) {
+    disciplineStrip.scrollLeft += TICKER_SPEED * (elapsed / 1000);
+    normalizeTickerPosition();
+  }
+
+  tickerAnimationFrame = requestAnimationFrame(runTickerAnimation);
+}
+
+function startTickerAnimation() {
+  if (tickerAnimationFrame || !tickerIsVisible || reducedMotion.matches) return;
+  tickerLastTime = 0;
+  tickerAnimationFrame = requestAnimationFrame(runTickerAnimation);
+}
+
+if (disciplineStrip && disciplineTrack && disciplineGroup) {
+  buildTickerLoop();
+  document.fonts?.ready.then(queueTickerBuild);
+
+  disciplineStrip.addEventListener("scroll", normalizeTickerPosition, { passive: true });
+  disciplineStrip.addEventListener("wheel", () => pauseTicker(1600), { passive: true });
+  disciplineStrip.addEventListener("dragstart", (event) => event.preventDefault());
+
+  disciplineStrip.addEventListener("pointerdown", (event) => {
+    pauseTicker(1800);
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+
+    event.preventDefault();
+    tickerIsDragging = true;
+    tickerDragStartX = event.clientX;
+    tickerDragStartScroll = disciplineStrip.scrollLeft;
+    disciplineStrip.classList.add("is-dragging");
+    disciplineStrip.setPointerCapture(event.pointerId);
+  });
+
+  disciplineStrip.addEventListener("pointermove", (event) => {
+    if (!tickerIsDragging) {
+      if (event.pointerType !== "mouse") pauseTicker(1800);
+      return;
+    }
+
+    disciplineStrip.scrollLeft = tickerDragStartScroll - (event.clientX - tickerDragStartX);
+    tickerDragStartScroll += normalizeTickerPosition();
+  });
+
+  const finishTickerDrag = (event) => {
+    if (tickerIsDragging) {
+      tickerIsDragging = false;
+      disciplineStrip.classList.remove("is-dragging");
+      if (disciplineStrip.hasPointerCapture(event.pointerId)) {
+        disciplineStrip.releasePointerCapture(event.pointerId);
+      }
+    }
+    pauseTicker(1200);
+  };
+
+  disciplineStrip.addEventListener("pointerup", finishTickerDrag);
+  disciplineStrip.addEventListener("pointercancel", finishTickerDrag);
+
+  disciplineStrip.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    pauseTicker(1800);
+    disciplineStrip.scrollLeft += event.key === "ArrowRight" ? 160 : -160;
+    normalizeTickerPosition();
+  });
+
+  if ("ResizeObserver" in window) {
+    const tickerResizeObserver = new ResizeObserver(queueTickerBuild);
+    tickerResizeObserver.observe(disciplineStrip);
+    tickerResizeObserver.observe(disciplineGroup);
+  } else {
+    window.addEventListener("resize", queueTickerBuild);
+  }
+
+  if ("IntersectionObserver" in window) {
+    const tickerObserver = new IntersectionObserver((entries) => {
+      tickerIsVisible = entries.some((entry) => entry.isIntersecting);
+      if (tickerIsVisible) {
+        startTickerAnimation();
+      } else {
+        stopTickerAnimation();
+      }
+    });
+    tickerObserver.observe(disciplineStrip);
+  } else {
+    tickerIsVisible = true;
+    startTickerAnimation();
+  }
+
+  listenForMediaChange(reducedMotion, () => {
+    if (reducedMotion.matches) {
+      stopTickerAnimation();
+    } else {
+      startTickerAnimation();
+    }
+  });
+}
+
 const expertiseItems = [...document.querySelectorAll(".expertise__item")];
 
 expertiseItems.forEach((item) => {
