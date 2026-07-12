@@ -619,10 +619,30 @@ html:not(.js) .site-header .nav__contact {
 
 /* Discipline ticker */
 .discipline-strip {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-block: 1px solid oklch(1 0 0 / 0.14);
   background: var(--color-ink);
   color: white;
+  cursor: grab;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.discipline-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.discipline-strip:focus-visible {
+  outline-color: var(--color-signal);
+  outline-offset: -4px;
+}
+
+.discipline-strip.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .discipline-strip__track,
@@ -633,7 +653,7 @@ html:not(.js) .site-header .nav__contact {
 }
 
 .discipline-strip__track {
-  animation: ticker 28s linear infinite;
+  min-width: max-content;
 }
 
 .discipline-strip__group {
@@ -1334,10 +1354,6 @@ html:not(.js) .site-header .nav__contact {
   55% { transform: translateY(0.3rem); }
 }
 
-@keyframes ticker {
-  to { transform: translateX(-50%); }
-}
-
 @keyframes reveal-up {
   from {
     transform: translateY(1.8rem);
@@ -1787,17 +1803,7 @@ html:not(.js) .site-header .nav__contact {
   }
 
   .discipline-strip__track {
-    width: 100%;
     transform: none;
-  }
-
-  .discipline-strip__group {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .discipline-strip__group[aria-hidden="true"] {
-    display: none;
   }
 
   .hero__visual,

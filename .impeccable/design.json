@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-11T16:04:31Z",
+  "generatedAt": "2026-07-12T07:53:34Z",
   "title": "Design System: Nazar Hasanov Portfolio",
   "extensions": {
     "colorMeta": {
@@ -72,7 +72,7 @@
       {"name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default state transition and entrance easing."},
       {"name": "hero-entrance", "value": "950ms to 1100ms", "purpose": "Orchestrates the name and orbit composition on first load."},
       {"name": "orbit-loop", "value": "17s to 24s linear", "purpose": "Slow continuous motion for the two hero rings."},
-      {"name": "ticker-loop", "value": "28s linear", "purpose": "Moves the discipline strip without interrupting reading."}
+      {"name": "ticker-loop", "value": "36px/s while visible", "purpose": "Moves the infinite discipline rail automatically while yielding to drag, touch, trackpad, and keyboard input."}
     ],
     "breakpoints": [
       {"name": "compact", "value": "560px"},
@@ -150,6 +150,7 @@
       "Do let Electric Blue carry a large surface instead of using it as a small accent.",
       "Do use verified outcomes, dates, roles, and credential links as primary evidence.",
       "Do vary motion by purpose: orbit in the hero, zoom on imagery, horizontal entry for rails, and object scale for the contact action.",
+      "Do let direct user input take priority over automatic movement.",
       "Do preserve WCAG 2.2 AA contrast, visible focus, keyboard access, reduced motion, and useful no-JavaScript content.",
       "Do keep cards at 12px corners and reserve full pills for buttons, tags, and circular controls."
     ],
