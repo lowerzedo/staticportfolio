@@ -165,6 +165,16 @@ Components feel tactile and confident, with simple shapes and explicit state cha
 - The mobile menu is a solid Systems Ink viewport with large links, keyboard containment, overflow support, and a Signal Lime action.
 - Without JavaScript, navigation remains visible as a static wrapped list.
 
+### Selected Work
+
+- Page order is Hero, About, Expertise, Credentials, Experience, Selected Work, then Contact. Projects retain direct links from the primary navigation and hero action.
+- Two screenshot-led features use equal desktop columns with shared subgrid rows, keeping their visuals, headings, descriptions, stacks, and disclosures aligned. Four flat, rule-separated project rows pair application screenshots with their descriptions. Mobile presents a single column.
+- Each project has a plain-language purpose, a compact technology list, and a native details disclosure for technical scope. All six remain readable and operable without JavaScript.
+- Product imagery uses repository assets and captures of actual UI components with fictional or masked data. Application figures identify synthetic demo data and link to full-resolution images. SyncFlo screens use complete iPhone frames with screen-proportional corner radii and hardware casing; they retain their full screen aspect ratio. No stock code imagery or fabricated dashboards.
+- Project disclosure controls have a visible focus state and at least a 44px target. Hover movement belongs only to the linked console screenshot; reduced motion keeps it static.
+- `assets/css/projects.css` extends the shared tokens; `PROJECTS.md` records content and image sources.
+- Desktop screenshot previews trim a narrow strip from the right edge with an overflow crop to hide captured browser scrollbars. Full-resolution source links and the complete SyncFlo phone screens are preserved.
+
 ### Experience Rows
 
 - Work and education use linear rows, not an alternating timeline.

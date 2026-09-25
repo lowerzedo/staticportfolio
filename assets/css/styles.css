@@ -198,6 +198,16 @@ li {
   color: var(--color-ink);
 }
 
+.company-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.company-link:hover {
+  color: var(--color-blue-deep);
+}
+
 /* Header */
 .site-header {
   position: fixed;
@@ -899,6 +909,11 @@ html:not(.js) .site-header .nav__contact {
   line-height: 1.55;
 }
 
+/* Keep the summary grid stable while the expanded chips provide the skills. */
+.expertise__item[open] .expertise__preview {
+  visibility: hidden;
+}
+
 .expertise__mark {
   position: relative;
   width: 2.8rem;
@@ -1073,6 +1088,14 @@ html:not(.js) .site-header .nav__contact {
 
 .career__row--current div p {
   color: white;
+}
+
+.career__row--current .company-link:hover {
+  color: var(--color-signal);
+}
+
+.career__row--current .company-link:focus-visible {
+  outline-color: var(--color-signal);
 }
 
 .career__place {

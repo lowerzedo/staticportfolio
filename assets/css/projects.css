@@ -1,0 +1,405 @@
+/* Selected work extends the existing Archivo, blue, lime, and ink system. */
+.projects__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.projects__heading h2 {
+  margin: 0;
+  font-size: clamp(2.8rem, 6.2vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.projects__heading > p {
+  max-width: 37ch;
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.projects__featured {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 4vw, 3.5rem);
+  row-gap: 0;
+  margin-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.projects__featured > .project {
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+  min-width: 0;
+}
+
+.projects__featured .project__details {
+  align-self: start;
+}
+
+.project__visual {
+  display: flex;
+  height: clamp(21rem, 31vw, 26rem);
+  overflow: hidden;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+}
+
+.project__visual-caption {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.project__visual--cai {
+  justify-content: space-between;
+  background: oklch(0.25 0.028 185);
+  color: oklch(0.92 0.022 185);
+}
+
+.project__screenshot {
+  display: block;
+  flex-shrink: 0;
+  width: calc(100% - 2rem);
+  margin: auto 0 0 2rem;
+  overflow: hidden;
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+/* Trim the captured browser scrollbar from the right edge of desktop previews. */
+.project__screenshot img,
+.project-row__preview img {
+  width: 101.5%;
+  max-width: none;
+  height: auto;
+}
+
+.project__visual--cai img {
+  transition: transform 350ms var(--ease-out);
+}
+
+.project__visual--cai:hover img {
+  transform: translateY(-5px);
+}
+
+.project__visual--cai:focus-visible {
+  outline-color: var(--color-blue-deep);
+}
+
+.project__visual--syncflo {
+  background: oklch(0.91 0.025 260);
+  color: var(--color-ink);
+}
+
+.project__phones {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: 0.25rem 1.5rem 1.5rem;
+}
+
+.project__phone {
+  position: relative;
+  box-sizing: content-box;
+  height: calc(100% - 12px);
+  aspect-ratio: 1206 / 2622;
+  flex: 0 0 auto;
+  padding: 5px;
+  border: 1px solid oklch(0.5 0.009 265);
+  border-radius: 16% / 7.4%;
+  background: oklch(0.17 0.006 265);
+}
+
+.project__phone img {
+  width: 100%;
+  height: 100%;
+  border-radius: 13% / 6%;
+}
+
+/* Hardware buttons sit outside the casing; the captures retain their island. */
+.project__phone::before,
+.project__phone::after {
+  position: absolute;
+  width: 2px;
+  border-radius: 1px;
+  background: oklch(0.43 0.01 265);
+  content: "";
+}
+
+.project__phone::before {
+  top: 24%;
+  left: -3px;
+  height: 13%;
+}
+
+.project__phone::after {
+  top: 29%;
+  right: -3px;
+  height: 10%;
+}
+
+.project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem 1rem;
+  margin-block: 1.4rem 0.65rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.project h3,
+.project-row h3 {
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.project__description {
+  max-width: 65ch;
+  margin-bottom: 1.15rem;
+}
+
+.project__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.project__details {
+  border-top: 1px solid var(--color-line);
+}
+
+.project__details summary {
+  display: flex;
+  min-height: 3.3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.project__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.project__details summary:hover {
+  color: var(--color-blue-deep);
+}
+
+.project__toggle {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-paper-dim);
+  color: var(--color-ink);
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+
+.project__details[open] .project__toggle {
+  background: var(--color-signal);
+  transform: rotate(45deg);
+}
+
+.project__detail-body {
+  padding: 0.6rem 0 0.5rem;
+  font-size: 0.94rem;
+}
+
+.project__detail-body h4 {
+  margin: 0 0 0.85rem;
+  font-size: 1rem;
+}
+
+.project__detail-body ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.2rem;
+}
+
+.project__detail-body li + li {
+  margin-top: 0.6rem;
+}
+
+.project__note {
+  margin: 0 0 1rem;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-line);
+}
+
+.project-row__media {
+  min-width: 0;
+  margin: 0;
+}
+
+.project-row__preview {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-paper-dim);
+}
+
+.project-row__preview img {
+  transition: opacity 200ms var(--ease-out);
+}
+
+.project-row__preview:hover img {
+  opacity: 0.85;
+}
+
+.project-row__media figcaption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.project-row__heading {
+  margin-bottom: 1.25rem;
+}
+
+.project-row h3 {
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+}
+
+.project__category {
+  margin-bottom: 0.85rem;
+  color: var(--color-blue-deep);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.project-row__subtitle {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.projects__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.projects__footer p {
+  margin: 0;
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+  .nav,
+  .nav__panel {
+    gap: 1rem;
+  }
+  .nav__links {
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .projects__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .projects__heading > p {
+    max-width: 52ch;
+  }
+  .projects__featured {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .projects__featured > .project {
+    display: block;
+    grid-row: auto;
+  }
+  .project__visual {
+    height: clamp(21rem, 65vw, 28rem);
+  }
+  .project__visual--cai {
+    height: auto;
+    aspect-ratio: 1.55;
+  }
+  .project__screenshot {
+    width: 88%;
+    margin: auto 0 0 auto;
+  }
+  .project__phones {
+    gap: 1.25rem;
+  }
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .project__visual-caption {
+    padding: 0.85rem 1rem;
+    font-size: 0.6rem;
+  }
+  .project__visual--syncflo {
+    height: clamp(18rem, 88vw, 25rem);
+  }
+  .project__phones {
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .project-row h3 {
+    margin-bottom: 0.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project__visual--cai:hover img,
+  .project__details[open] .project__toggle {
+    transform: none;
+  }
+}

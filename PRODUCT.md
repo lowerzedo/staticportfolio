@@ -12,6 +12,8 @@ Recruiters and engineering leaders assessing Nazar Hasanov for cloud engineering
 
 Present Nazar as a technically authoritative and versatile software engineer, make his current role and experience easy to understand, and turn interest into a LinkedIn visit, GitHub visit, or direct conversation. Success means a visitor understands his value within the first screen and can verify his experience, expertise, and credentials without friction.
 
+Selected projects follow Credentials and Experience: CAI Verify, SyncFlo (the native Swift iOS app), MedBot, Kaizen Flow, Wilsons Creek Insurance (Insurance Management), and Sterling Ledger Capital (Loan Management). Visitors can view product screenshots, scan the purpose and stack, then expand technical details. Copy must reflect implemented capabilities and distinguish engineering alphas and reference implementations from production applications. Source and asset provenance is recorded in PROJECTS.md.
+
 ## Brand Personality
 
 Technically authoritative, ambitious, and personable. The experience should feel engineered, kinetic, and assured: creative enough to be memorable, disciplined enough to build trust.
